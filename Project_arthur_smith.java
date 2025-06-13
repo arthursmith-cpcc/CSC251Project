@@ -57,7 +57,6 @@ public class Project_arthur_smith {
          Policy newPolicyOne = allPolicies.get(i);
          String status = newPolicyOne.getSmokingStatus();
       
-         System.out.println();
          System.out.println("Policy Number: " + newPolicyOne.getPolicyNumber());
          System.out.println("Provider Name: " + newPolicyOne.getProvider());
          System.out.println("Policyholder's First Name: " + newPolicyOne.getFirstName());
