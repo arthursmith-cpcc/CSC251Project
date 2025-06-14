@@ -9,7 +9,9 @@ public class Policy{
    private double heightInches;
    private double weightPounds;
    
-   //No arg constructor
+   /**
+      No arg constructor for Policy class
+   */
    public Policy(){
    
       policyNumber = "0000";
