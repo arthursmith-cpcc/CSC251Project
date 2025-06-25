@@ -2,6 +2,8 @@ public class Policy{
 
    private String policyNumber;
    private String providerName;
+   
+   private static int policyCount = 0;
       
    /**
       No arg constructor for Policy class
@@ -10,6 +12,7 @@ public class Policy{
    
       policyNumber = "0000";
       providerName = "No Provider Set";
+      policyCount++;
    }
    
    /**
@@ -21,6 +24,7 @@ public class Policy{
    
       policyNumber = policyNum;
       providerName = provider;
+      policyCount++;
    }
    
    /**
@@ -86,5 +90,14 @@ public class Policy{
       String str = "Policy Number: " + policyNumber +
                    "\nProvider Name: " + providerName + "\n";
       return str;
+   }
+   
+   /** 
+      Method to return number of policy objects created
+      @return Number of policy objects as int from static counter field
+   **/
+   public int getPolicyCount() {
+      
+      return policyCount;
    }
 }
