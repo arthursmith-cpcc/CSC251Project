@@ -41,6 +41,20 @@ public class PolicyHolder {
    }
    
    /**
+      Copy constructor
+      @param newPH PolicyHolder object to be copied
+   **/
+   public PolicyHolder(PolicyHolder newPH) {
+      
+      firstName = newPH.firstName;
+      lastName = newPH.lastName;
+      holderAge = newPH.holderAge;
+      smokingStatus = newPH.smokingStatus;
+      heightInches = newPH.heightInches;
+      weightPounds = newPH.weightPounds;
+   }
+   
+   /**
       Method to set policyholder's first name
       @param holderFN Policyholder's first name
    */
@@ -158,7 +172,7 @@ public class PolicyHolder {
    **/
    public String toString() {
       
-      String str = "First Name: " + firstName +
+      String str = "Policy Holder First Name: " + firstName +
                    "\nLast Name: " + lastName +
                    "\nAge: " + holderAge +
                    "\nSmoking Status: " + smokingStatus +
