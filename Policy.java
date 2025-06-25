@@ -2,6 +2,7 @@ public class Policy{
 
    private String policyNumber;
    private String providerName;
+   private PolicyHolder customer;
    
    private static int policyCount = 0;
       
@@ -12,6 +13,7 @@ public class Policy{
    
       policyNumber = "0000";
       providerName = "No Provider Set";
+      customer = new PolicyHolder();
       policyCount++;
    }
    
@@ -19,11 +21,13 @@ public class Policy{
       Arg constructor for Policy class
       @param policyNum Policy number as String
       @param provider  Policy provider
+      @param newPH PolicyHolder object for deep copy
    */
-   public Policy(String policyNum, String provider){
+   public Policy(String policyNum, String provider, PolicyHolder newPH){
    
       policyNumber = policyNum;
       providerName = provider;
+      customer = new PolicyHolder(newPH);
       policyCount++;
    }
    
@@ -62,20 +66,40 @@ public class Policy{
    }
    
    /**
+      Method to set PolicyHolder
+      @param newPH PolicyHolder object for deep copy
+   **/
+   public void setPolicyHolder(PolicyHolder newPH) {
+   
+      customer = new PolicyHolder(newPH);
+   }
+   
+   /**
+      Method to get PolicyHolder object
+      @return Deep copy of PolicyHolder object
+   **/
+   public PolicyHolder getPolicyHolder() {
+      
+      PolicyHolder newPH = new PolicyHolder(customer);
+      return newPH;
+   }
+   
+   /**
       Method to calculate price of policy
       @return Calculated price as a double
    */
    public double getPrice(){
       
       double price = 600.00;
-      
-      if (holderAge > 50)
+      PolicyHolder customerCopy = new PolicyHolder(customer);
+            
+      if (customerCopy.getAge() > 50)
          price += 75.00;
       
-      if (smokingStatus.equals("smoker"))
+      if (customerCopy.getSmokingStatus().equals("smoker"))
          price += 100.00;
          
-      if (getBMI() > 35)
+      if (customerCopy.getBMI() > 35)
          price += ((getBMI() - 35) * 20);
          
       return price;
@@ -88,7 +112,7 @@ public class Policy{
    public String toString() {
       
       String str = "Policy Number: " + policyNumber +
-                   "\nProvider Name: " + providerName + "\n";
+                   "\nProvider Name: " + providerName + "\n" + customer;
       return str;
    }
    
