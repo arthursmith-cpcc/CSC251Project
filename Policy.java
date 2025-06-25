@@ -100,7 +100,7 @@ public class Policy{
          price += 100.00;
          
       if (customerCopy.getBMI() > 35)
-         price += ((getBMI() - 35) * 20);
+         price += ((customerCopy.getBMI() - 35) * 20);
          
       return price;
    }

@@ -40,8 +40,9 @@ public class Project_arthur_smith {
                inputFile.nextLine();
             
             //Create policy instance
-            Policy newPolicy = new Policy(policyNum, provider, firstName, lastName,
-                                          age, smokeStat, height, weight);
+            PolicyHolder newCustomer = new PolicyHolder(firstName, lastName, age, smokeStat,
+                                                        height, weight);
+            Policy newPolicy = new Policy(policyNum, provider, newCustomer);
             
             //Add new policy to arraylist
             allPolicies.add(newPolicy);
@@ -55,17 +56,11 @@ public class Project_arthur_smith {
       for(int i = 0; i < allPolicies.size(); i++) {
       
          Policy newPolicyOne = allPolicies.get(i);
-         String status = newPolicyOne.getSmokingStatus();
+         PolicyHolder tempCustomer = newPolicyOne.getPolicyHolder();
+         String status = tempCustomer.getSmokingStatus();
       
-         System.out.println("Policy Number: " + newPolicyOne.getPolicyNumber());
-         System.out.println("Provider Name: " + newPolicyOne.getProvider());
-         System.out.println("Policyholder's First Name: " + newPolicyOne.getFirstName());
-         System.out.println("Policyholder's Last Name: " + newPolicyOne.getLastName());
-         System.out.println("Policyholder's Age: " + newPolicyOne.getAge());
-         System.out.println("Policyholder's Smoking Status: " + newPolicyOne.getSmokingStatus());
-         System.out.printf("Policyholder's Height: %.1f inches\n", newPolicyOne.getHeight());
-         System.out.printf("Policyholder's Weight: %.1f pounds\n", newPolicyOne.getWeight());
-         System.out.printf("Policyholder's BMI: %.2f\n", newPolicyOne.getBMI());
+         System.out.print(newPolicyOne);
+         System.out.printf("Policyholder's BMI: %.2f\n", tempCustomer.getBMI());
          System.out.printf("Policy Price: $%.2f\n", newPolicyOne.getPrice());
          System.out.println();
          
@@ -75,7 +70,8 @@ public class Project_arthur_smith {
             nonSmokerPolicy++;
       }
       
-      System.out.printf("The number of policies with a smoker is: %d\n\n", smokerPolicy);
+      System.out.printf("There were %d Policy objects created.\n\n", allPolicies.get(0).getPolicyCount());      
+      System.out.printf("The number of policies with a smoker is: %d\n", smokerPolicy);
       System.out.printf("The number of policies with a non-smoker is: %d", nonSmokerPolicy);
    }
 }
