@@ -151,4 +151,19 @@ public class PolicyHolder {
       double BMI = (weightPounds*703)/(heightInches*heightInches);
       return BMI;
    }
+   
+   /**
+      Method to return String object containing data from class fields
+      @return Class field data as String
+   **/
+   public String toString() {
+      
+      String str = "First Name: " + firstName +
+                   "\nLast Name: " + lastName +
+                   "\nAge: " + holderAge +
+                   "\nSmoking Status: " + smokingStatus +
+                   "\nHeight (in inches): " + heightInches +
+                   "\nWeight (in pounds): " + weightPounds + "\n";
+      return str;
+   }
 }
