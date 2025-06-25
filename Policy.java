@@ -76,4 +76,15 @@ public class Policy{
          
       return price;
    }
+   
+   /**
+      Method to return String object containing data from class fields
+      @return Class field data as String
+   **/
+   public String toString() {
+      
+      String str = "Policy Number: " + policyNumber +
+                   "\nProvider Name: " + providerName + "\n";
+      return str;
+   }
 }
